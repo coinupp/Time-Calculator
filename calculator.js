@@ -18,18 +18,18 @@ function secToMinHour(s) {
   if (Sec >= 60 && Sec < 3600) {
     Min = parseInt(Sec / 60)
     Sec = Sec % 60
-    return `${Min}분 ${Sec}초`
+    return `${Min}m ${Sec}s`
   } else if (Sec >= 3600) {
     Hour = parseInt(Sec / 3600)
     Sec = Sec % 3600
     Min = parseInt(Sec / 60)
     Sec = Sec % 60
-    return `${Hour}시간 ${Min}분 ${Sec}초`
+    return `${Hour}h ${Min}m ${Sec}s`
   } else if (Sec == undefined) {
     // pass
   }
   else {
-    return `${Sec}초`
+    return `${Sec}s`
   }
 }
 
