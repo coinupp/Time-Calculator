@@ -11,3 +11,10 @@ h1 {
 #result {
   margin-top: 1em;
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: black;
+    color: white;
+  }
+}
