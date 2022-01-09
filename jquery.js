@@ -20,3 +20,7 @@
 function print(any) {
   console.log(any);
 }
+
+String.prototype.toString = function() {
+  return this * 1;
+}
