@@ -51,19 +51,13 @@ function submitClick() {
   }
 }
 
-
-function toNumber(string) {
-  string *= 1
-  return string
-}
-
 let sumOfMin_60 = 0,
   sumOfSec = 0;
 
 function appendMinSecValue() {
   for (let a = 0; a < j+1; a++) {
-    sumOfMin_60 += toNumber(minCl_prime[a].value) * 60;
-    sumOfSec += toNumber(secCl_prime[a].value)
+    sumOfMin_60 += minCl_prime[a].value.toNumber() * 60;
+    sumOfSec += secCl_prime[a].value.toNumber()
   }
 }
 
