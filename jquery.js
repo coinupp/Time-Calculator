@@ -21,6 +21,6 @@ function print(any) {
   console.log(any);
 }
 
-String.prototype.toString = function() {
-  return this * 1;
+String.prototype.toNumber = function() {
+  return Number(this);
 }
