@@ -17,10 +17,6 @@
 
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
 
-function print(any) {
-  console.log(any);
-}
-
 String.prototype.toNumber = function() {
   return Number(this);
 }
