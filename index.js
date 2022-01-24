@@ -69,5 +69,4 @@ toggle.addEventListener('click', function() {
     submitBtn.disabled = false
   }
   toggleCount++
-  console.log(toggleCount, toggleOn)
 })
