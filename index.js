@@ -1,23 +1,23 @@
-var btn = document.querySelector('.cal');
-var plus = document.querySelector('.bt')
-var submitBtn = document.querySelector('#고수달')
-var main = document.querySelector('#main')
+// @ts-check
+const btn = document.querySelector('.cal');
+const plus = document.querySelector('.bt')
+const submitBtn = document.querySelector('#고수달')
+const main = document.querySelector('#main')
+const reset = document.querySelector("#reset")
 
-var brTag = document.getElementsByName("br");
-var minCl = document.querySelector('.min')
-var secCl = document.querySelector('.sec')
+const brTag = document.getElementsByName("br");
+const minCl = document.querySelector('.min')
+const secCl = document.querySelector('.sec')
 
-var minCl_prime = [];
-var secCl_prime = [];
-var br = [];
+let minCl_prime = [];
+let secCl_prime = [];
+let br = [];
 
 
-var i = 0
-var j = -1
+let i = 0
+let j = -1
 
 function createMinSecClone() {
-
-
   minCl_prime[i] = minCl.cloneNode(true)
   minCl_prime[i].style.visibility = 'visible'
   main.appendChild(minCl_prime[i])
@@ -69,4 +69,15 @@ toggle.addEventListener('click', function() {
     submitBtn.disabled = false
   }
   toggleCount++
+})
+
+reset.addEventListener('click', () => {
+  minCl.value = null
+  secCl.value = null
+  minCl_prime.forEach(e => {
+    e.value = null
+  })
+  secCl_prime.forEach(e => {
+    e.value = null
+  })
 })
