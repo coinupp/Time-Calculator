@@ -57,8 +57,8 @@ function appendMinSecValue() {
 
 const toggle = document.querySelector('#switch')
 
-var toggleOn = false
-var toggleCount = 0
+let toggleOn = false
+let toggleCount = 0
 
 toggle.addEventListener('click', function() {
   if (toggleCount % 2 === 0) {
