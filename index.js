@@ -1,13 +1,15 @@
 // @ts-check
 const btn = document.querySelector('.cal');
 const plus = document.querySelector('.bt')
-const submitBtn = document.querySelector('#고수달')
+const submitBtn = document.querySelector('#calculate')
 const main = document.querySelector('#main')
 const reset = document.querySelector("#reset")
 
 const brTag = document.getElementsByName("br");
 const minCl = document.querySelector('.min')
 const secCl = document.querySelector('.sec')
+const result = document.querySelector('#result')
+const speedUpButton = document.querySelector('#1.5')
 
 let minCl_prime = [];
 let secCl_prime = [];
@@ -40,7 +42,7 @@ submitBtn.addEventListener('click', submitClick)
 
 function submitClick() {
     appendMinSecValue()
-    JavaScript(sumOfMin_60 + sumOfSec)
+    Calculate(sumOfMin_60 + sumOfSec)
     sumOfMin_60 = 0
     sumOfSec = 0
 }
@@ -55,21 +57,21 @@ function appendMinSecValue() {
   }
 }
 
-const toggle = document.querySelector('#switch')
+// const toggle = document.querySelector('#switch')
 
-let toggleOn = false
-let toggleCount = 0
+// let toggleOn = false
+// let toggleCount = 0
 
-toggle.addEventListener('click', function() {
-  if (toggleCount % 2 === 0) {
-    toggleOn = true
-    submitBtn.disabled = true
-  } else {
-    toggleOn = false
-    submitBtn.disabled = false
-  }
-  toggleCount++
-})
+// toggle.addEventListener('click', function() {
+//   if (toggleCount % 2 === 0) {
+//     toggleOn = true
+//     submitBtn.disabled = true
+//   } else {
+//     toggleOn = false
+//     submitBtn.disabled = false
+//   }
+//   toggleCount++
+// })
 
 reset.addEventListener('click', () => {
   minCl.value = null
@@ -80,4 +82,9 @@ reset.addEventListener('click', () => {
   secCl_prime.forEach(e => {
     e.value = null
   })
+})
+
+speedUpButton?.addEventListener('click', () => {
+  const textOfTime = result?.innerHTML
+  console.log(textOfTime)
 })
