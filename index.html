@@ -100,7 +100,7 @@
 
             var totalSeconds = 0;
             for (var i = 0; i < hoursInputs.length; i++) {
-                totalSeconds += (hoursInputs[i].value * 3600) + (minutesInputs[i].value * 60) + (secondsInputs[i].value);
+                totalSeconds += (hoursInputs[i].value * 3600) + (minutesInputs[i].value * 60) + (+secondsInputs[i].value);
             }
 
             var resultHours = Math.floor(totalSeconds / 3600);
