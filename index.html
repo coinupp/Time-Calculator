@@ -1,38 +1,117 @@
 <!DOCTYPE html>
-<html lang="ko">
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="index.css">
-  <script defer src="jquery.js"></script>
-  <script defer src="calculator.js"></script>
-  <script defer src='index.js'></script>
+    <title>Time Calculator</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #container {
+            max-width: 500px;
+            width: 90%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .timeInput {
+            display: flex;
+            justify-content: space-around; /* changed from space-between */
+            margin-bottom: 10px;
+        }
+
+        input {
+            flex: 1; /* new */
+            margin-right: 5px; /* new */
+            margin-left: 5px; /* new */
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
 </head>
-
 <body>
-  <h1>Time Calculator</h1>
-  <div id="main">
-    <div class="cal">
-      <input class="min" type="number" placeholder="min">
-      <input class="sec" type="number" placeholder="sec">
-      <input class="bt" type="button" value="+"><br name="br">
+    <div id="container">
+        <h1>Time Calculator</h1>
+        <button onclick="addFields()">Add More Fields</button>
+        <button onclick="calculateTime()">Calculate</button>
+        <div id="result"></div>
     </div>
-  </div>
-  <input id="calculate" type="submit" value="Calculate">
-  <input id="reset" type="submit" value="reset">
-  <input id="1.5" type="submit" value="1.5">
-  <div id="result"></div>
+
+    <script>
+        function addFields() {
+            var container = document.getElementById('container');
+            var newField = document.createElement('div');
+            newField.className = 'timeInput';
+            newField.innerHTML = `
+                <input type="number" class="hours" placeholder="Hours">
+                <input type="number" class="minutes" placeholder="Minutes">
+                <input type="number" class="seconds" placeholder="Seconds">
+            `;
+            container.insertBefore(newField, container.children[container.children.length-2]);
+        }
+
+        function calculateTime() {
+            var hoursInputs = document.getElementsByClassName('hours');
+            var minutesInputs = document.getElementsByClassName('minutes');
+            var secondsInputs = document.getElementsByClassName('seconds');
+
+            var totalSeconds = 0;
+            for (var i = 0; i < hoursInputs.length; i++) {
+                totalSeconds += (hoursInputs[i].value * 3600) + (minutesInputs[i].value * 60) + (secondsInputs[i].value);
+            }
+
+            var resultHours = Math.floor(totalSeconds / 3600);
+            var resultMinutes = Math.floor((totalSeconds % 3600) / 60);
+            var resultSeconds = totalSeconds % 60;
+
+            document.getElementById('result').innerText = resultHours + " hours " + resultMinutes + " minutes " + resultSeconds + " seconds";
+        }
+
+        // Add the first set of fields when the page loads
+        window.onload = addFields;
+    </script>
 </body>
-<!-- toggle License -->
-<!-- Copyright (c) 2022 by Marcus Burnette (https://codepen.io/mburnette/pen/LxNxNg)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
-
 </html>
